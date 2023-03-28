@@ -57,7 +57,6 @@ def write_words_to_en(w_list, count):
 # IMPORTANT! Specify chromedriver location on your device
 chrome_driver_path = "/Users/username/Development/chromedriver"
 
-
 s = Service(executable_path=chrome_driver_path)  # add options=chrome_options to work headless
 driver = webdriver.Chrome(service=s)
 driver.implicitly_wait(10)
