@@ -8,7 +8,10 @@ import time
 # IMPORTANT! Enter your EN login details and level number where you want to fill codes
 login_name = "your login name"
 login_password = "your login password"
-lvl_number = 22
+lvl_number = 9
+sector_name = ""
+iteration_count = 1  # How many times same code is entered
+file_name = "codes.txt"
 
 
 def login_to_en(l_name, l_pass):
@@ -34,13 +37,13 @@ def create_word_list(filename):
     return list_of_words
 
 
-def write_words_to_en(w_list, count, sector_name):
+def write_words_to_en(w_list, count, sec_name):
     for word in w_list:
         for i in range(count):
             add_sector_button = driver.find_element(By.ID, 'AnswersTable_ctl00_lnkCreateSector')
             add_sector_button.click()
             sector_name_input = driver.find_element(By.NAME, 'txtSectorName')
-            sector_name_input.send_keys(sector_name)
+            sector_name_input.send_keys(sec_name)
             time.sleep(1)
             sector_name_input.send_keys(Keys.TAB)
             answer_input = driver.switch_to.active_element
@@ -80,10 +83,10 @@ login_to_en(login_name, login_password)
 press_show_button()
 
 # Create code list from file, in this case from 'codes.txt'
-word_list = create_word_list("codes.txt")
+word_list = create_word_list(file_name)
 
-# Fill codes to EN as many times as indicated
-write_words_to_en(word_list, 1, "2")
+# Fill codes to EN as many times as indicated in iteration_count variable
+write_words_to_en(word_list, iteration_count, sector_name)
 
 
 driver.quit()
