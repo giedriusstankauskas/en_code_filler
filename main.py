@@ -34,17 +34,19 @@ def create_word_list(filename):
     return list_of_words
 
 
-def write_words_to_en(w_list, count):
+def write_words_to_en(w_list, count, sector_name):
     for word in w_list:
         for i in range(count):
             add_sector_button = driver.find_element(By.ID, 'AnswersTable_ctl00_lnkCreateSector')
             add_sector_button.click()
             sector_name_input = driver.find_element(By.NAME, 'txtSectorName')
-            sector_name_input.send_keys("")
+            sector_name_input.send_keys(sector_name)
             time.sleep(1)
             sector_name_input.send_keys(Keys.TAB)
             answer_input = driver.switch_to.active_element
             answer_input.send_keys(word)
+            answer_input = driver.switch_to.active_element
+            answer_input.send_keys(f"700{word}")
             answer_input.send_keys(Keys.ENTER)
             time.sleep(1)
 
@@ -77,7 +79,7 @@ press_show_button()
 word_list = create_word_list("codes.txt")
 
 # Fill codes to EN as many times as indicated
-write_words_to_en(word_list, 1)
+write_words_to_en(word_list, 1, "2")
 
 
 driver.quit()
