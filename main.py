@@ -46,6 +46,10 @@ def write_words_to_en(w_list, count, sector_name):
             answer_input = driver.switch_to.active_element
             answer_input.send_keys(word)
             answer_input = driver.switch_to.active_element
+            answer_input.send_keys(Keys.TAB)
+            answer_input = driver.switch_to.active_element
+            answer_input.send_keys(Keys.TAB)
+            answer_input = driver.switch_to.active_element
             answer_input.send_keys(f"700{word}")
             answer_input.send_keys(Keys.ENTER)
             time.sleep(1)
