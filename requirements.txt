@@ -1,0 +1,5 @@
+pip~=21.2.4
+wheel~=0.37.0
+lxml~=4.6.4
+setuptools~=57.4.0
+selenium~=4.8.3
